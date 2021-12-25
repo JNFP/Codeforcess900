@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int x1,x2,p1,p2;
+        cin >> x1 >> p1 >> x2 >> p2;
+        int t1 = x1,t2 = x2;
+        int x1d = 0,x2d = 0;
+        while(t1){
+            x1d++;
+            t1/=10;
+        }
+        x1d+=p1;  
+        while(t2){
+            x2d++;
+            t2/=10;
+        }
+        x2d+=p2;
+        string s= "";
+        if(x1d>x2d){
+            s = ">";
+        }else if(x1d<x2d){
+            s = "<";
+        }else{
+            x1d-=p1;
+            x2d-=p2;
+            if(x1d<x2d){
+                for(int a = 0;a<x2d-x1d;a++){
+                    x1*=10;
+                }
+            }else if(x1d>x2d){
+                for(int a = 0;a<x1d-x2d;a++){
+                    x2*=10;
+                }
+            }
+            if(x1>x2) s = ">";
+            else if(x1<x2) s = "<";
+            else s = "=";
+        }
+
+        cout << s << endl;
+    }
+    return 0;
+}
